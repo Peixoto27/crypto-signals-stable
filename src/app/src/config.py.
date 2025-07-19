@@ -1,0 +1,4 @@
+# src/config.py
+COOLDOWN = 300  # 5 minutos em segundos
+CRYPTOS = ["BTC", "ETH", "BNB", "DOGE", "FLOKI", "PEPE", "BONK", "SHIB"]
+MIN_CONFIDENCE = 20  # 20% de confiança mínima
