@@ -1,0 +1,10 @@
+mkdir -p requirements
+echo "flask
+gunicorn
+ccxt
+pandas
+numpy
+python-dotenv
+psycopg2-binary
+ta-lib
+celery[redis]" > requirements/prod.txt
