@@ -1,10 +1,22 @@
-mkdir -p requirements
-echo "flask
-gunicorn
-ccxt
-pandas
-numpy
-python-dotenv
-psycopg2-binary
-ta-lib
-celery[redis]" > requirements/prod.txt
+# requirements/prod.txt - VERSÃO PROFISSIONAL PARA DEPLOY
+
+# Framework Web (ESSENCIAL)
+Flask==2.3.2  # API Web
+gunicorn==20.1.0  # WSGI Server
+python-dotenv==1.0.0  # Variáveis de ambiente
+
+# Integração Crypto (CORE)
+ccxt==4.1.52  # Conexão com exchanges
+requests==2.31.0  # Chamadas HTTP
+
+# Análise de Dados (ANÁLISE)
+pandas==2.0.3  # Manipulação de dados
+numpy==1.24.3  # Cálculos numéricos
+TA-Lib==0.4.24  # Indicadores técnicos*
+
+# Banco de Dados (PERSISTÊNCIA)
+psycopg2-binary==2.9.6  # PostgreSQL
+redis==4.5.5  # Cache/Celery
+
+# Monitoramento (OPCIONAL)
+sentry-sdk==1.25.1  # Error tracking
