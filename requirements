@@ -1,0 +1,7 @@
+# requirements/base.txt
+flask
+gunicorn
+ccxt
+pandas
+numpy
+python-dotenv
