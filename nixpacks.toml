@@ -2,11 +2,19 @@
 nixPkgs = ["python311", "python311Packages.pip", "python311Packages.setuptools", "python311Packages.wheel"]
 
 [phases.install]
-cmds = ["python3.11 -m pip install -r requirements.txt --no-cache-dir"]
+cmds = [
+  "echo 'Verificando Python version:'",
+  "python3.11 --version",
+  "echo 'Local do Python:'",
+  "which python3.11",
+  "echo 'Conteúdo do requirements.txt:'",
+  "cat requirements.txt",
+  "echo 'Iniciando instalação dos pacotes:'",
+  "python3.11 -m pip install --verbose -r requirements.txt --no-cache-dir"
+]
 
 [phases.build]
 cmds = ["echo 'Build phase completed'"]
 
 [start]
 cmd = "gunicorn --bind 0.0.0.0:$PORT app:app"
-
