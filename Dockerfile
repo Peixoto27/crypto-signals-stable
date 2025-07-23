@@ -1,18 +1,19 @@
-# Imagem base com Python 3.11
 FROM python:3.11-slim
 
-# Define diretório de trabalho
 WORKDIR /app
 
-# Copia os arquivos do projeto
-COPY . .
+# Copia só o requirements para cache melhor
+COPY requirements.txt .
 
-# Instala dependências
-RUN pip install --upgrade pip setuptools wheel
+# Atualiza pip e instala dependências
+RUN pip install --upgrade --no-cache-dir pip setuptools wheel
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta (Railway usa a env PORT)
+# Copia todo o código depois para aproveitar cache anterior
+COPY . .
+
 EXPOSE 8000
 
-# Comando de start
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "app:app"]
+
+
